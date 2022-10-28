@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.jdbc.core.JdbcTemplate;
 @RestController
 public class PatientTest {
-int wiek;
+
     @Autowired
     JdbcTemplate jdbcTemplate;
 
@@ -14,12 +14,16 @@ int wiek;
     @GetMapping("/test")
 
     public int test(){
-        wiek = jdbcTemplate.queryForObject("SELECT patient_age FROM patient WHERE id=1",Integer.class);
-        return wiek;
+        return jdbcTemplate.queryForObject("SELECT patient_age FROM patient WHERE id=2",Integer.class);
+    }
+    @GetMapping("/test2")
+    public String test2(){
+
+        return jdbcTemplate.queryForObject("SELECT patient_name FROM patient WHERE id=2",String.class);
     }
 
     @GetMapping("/Jarek")
-    public String test2(){
+    public String test3(){
         return "Jarek - mistrz Reacta bedzie odbierał takie API";
     }
 
